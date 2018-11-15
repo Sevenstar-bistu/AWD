@@ -1,0 +1,5 @@
+<?php
+system('crontab -r');//杀crontab
+system("ps -aux | grep 'www-data' | awk '{print $2}' | xargs kill -9");//杀不死马
+system("ps -aux | grep flag | awk '{print $2}' | xargs kill -9");//kill cat flag 进程
+?>

